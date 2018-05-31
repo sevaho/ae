@@ -1,5 +1,26 @@
 # ae
+
 file and folder structure templater 
+
+The goal is to speed up application creation by having a templater that makes a folder structure like:
+
+```
+.
+├── [sevaho    ]  app
+│   ├── [sevaho     ]  ae_lib.py
+│   ├── [sevaho     ]  app.py
+│   └── [sevaho     ]  requirements.txt
+├── [sevaho    ]  config
+├── [sevaho    ]  Dockerfile
+├── [sevaho    ]  .dockerignore
+├── [sevaho    ]  .gitignore
+└── [sevaho    ]  Makefile
+```
+
+but also for nodejs, golang and nginx.
+
+
+# Usage
 
 ```txt
 USAGE: ae [OPTIONS]... [ARGS]...
