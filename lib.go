@@ -591,6 +591,7 @@ dist
 // -----------------------------------------------------------------------------------------------------------------------------
 //
 // author: Sebastiaan Van Hoecke
+// mail: sebastiaan@sevaho.io
 //
 // NOTE:
 //
@@ -601,6 +602,8 @@ package main
 import (
 
     "fmt"
+    "os"
+    "flag"
 
 )
 
@@ -608,9 +611,36 @@ import (
 // CONSTANTS
 // -----------------------------------------------------------------------------------------------------------------------------
 
+var target      = ""
+var port        = 0
+
 // -----------------------------------------------------------------------------------------------------------------------------
 // FUNCTIONS
 // -----------------------------------------------------------------------------------------------------------------------------
+
+func usage () {
+
+    fmt.Printf(` + "`" + `Usage: %s [OPTIONS]... [ARGS]...
+
+    description
+
+OPTIONS:
+
+    -h, *               display the help and exit
+    -t, --target        target
+    -p, --port          port
+
+EXAMPLES:
+
+    %s -t 127.0.0.1 -p 8000
+
+NOTE:
+
+` + "`" + `, os.Args[0], os.Args[0])
+
+    os.Exit(0)
+
+}
 
 // -----------------------------------------------------------------------------------------------------------------------------
 // MAIN
@@ -618,8 +648,20 @@ import (
 
 func main () {
 
-    // todo
-    fmt.Println("Hello world");
+    argument_help := flag.Bool("h", false, "")
+    argument_target := flag.String("t", "", "")
+    argument_port := flag.Int("p", 0, "")
+
+    flag.Parse()
+
+    if (*argument_help) {
+    
+        usage()
+
+    }
+
+    target = *argument_target
+    port = *argument_port
 
 }
 `
